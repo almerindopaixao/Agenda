@@ -17,6 +17,23 @@ class Register {
         this.user = null;
     }
 
+    async login() {
+        this.validate()
+        if (this.errors.length > 0) return;
+        this.user = await RegisterModel.findOne({email: this.body.email});
+
+        if (!this.user) {
+            this.errors.push('Usuário não existe')
+            return 
+        }
+
+        if (!bcryptjs.compareSync(this.body.password, this.user.password)) {
+            this.errors.push('Senha Inválida')
+            this.user = null;
+            return
+        }
+    }
+
     async registered() {
         this.validate()
         if (this.errors.length > 0) return;
@@ -29,17 +46,14 @@ class Register {
         const salt = bcryptjs.genSaltSync();
         this.body.password = bcryptjs.hashSync(this.body.password, salt);
 
-        try {
-            this.user = await RegisterModel.create(this.body)
-        } catch(e) {
-            console.error(e)
-        }
+        this.user = await RegisterModel.create(this.body)
         
     }
 
     async userExists() {
-        const user = await RegisterModel.findOne({email: this.body.email});
-        if (user) this.errors.push('Usuário já existe')
+        this.user = await RegisterModel.findOne({email: this.body.email});
+        if (this.user) this.errors.push('Usuário já existe')
+
     }
 
     validate() {

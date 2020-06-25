@@ -4,7 +4,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     mode: 'development', //production
 
-    entry: './frontend/main.js',
+    entry: {
+        js: './frontend/main.js',
+        css: './frontend/assets/css/style.css'
+    },
 
     output: {
         path: path.resolve(__dirname, 'public', 'assets', 'js'),

@@ -1,18 +1,45 @@
 <%- include('includes/head') %> 
+<%- include('includes/nav') %> 
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8 my-3" >
+            <h1 class="text-center">Agenda</h1>
+            <p class="text-center lead">Seus contatos estão abaixos</p>
+            <div class="row my-3">
+                <div class="col">
+                    <div class="alert alert-danger">Um erro qualquer</div>
+                </div>
+            </div>
 
-    <main>
-        <section class="container">
-            <h1>
-                <%= csrfToken %>
-            </h1>
-            <form action="" method="post">
-                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                <label>Cliente:
-                    <input type="text" name="cliente">
-                </label>
-                <button>submit</button>
-            </form>
-        </section>
-    </main>
-
+            <div class="responsive-table">
+                <table class="table table-striped my-3">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Sobrenome</th>
+                        <th scope="col">Email</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>markotto@gmail.com</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>jacobthornton@gmail.com</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+        <div class="col-lg-12"></div>
+    </div>
+</div>
 <%- include('includes/footer') %> 

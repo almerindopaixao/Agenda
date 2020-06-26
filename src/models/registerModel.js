@@ -8,7 +8,7 @@ const RegisterSchema = new mongoose.Schema({
     
 });
 
-const RegisterModel = mongoose.model('users', RegisterSchema);
+const RegisterModel = mongoose.model('Usuarios', RegisterSchema);
 
 class Register {
     constructor(body) {
